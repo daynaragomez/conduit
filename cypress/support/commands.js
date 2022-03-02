@@ -10,39 +10,26 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
+// Cypress.Commands.add('login', (email, password) => { ... })
 //
 //
 // -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
+// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
 //
 // -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
+// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 //
 //
 // -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+//
+//Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('loginToApplication', () => {
-    
-    const userCredentials = {
-        "user": {
-            "email": Cypress.env('username'),
-            "password": Cypress.env('password')
-        }
-    }
+   cy.visit('/user/login')
+   cy.get('[placeholder="Email"]').type('test@test.com')
+   cy.get('[placeholder="Password"]').type('test')
+   cy.get('form').submit()
 
-    cy.request('POST', Cypress.env('apiUrl')+'api/users/login', userCredentials)
-        .its('body').then( body => {
-            const token = body.user.token
-            cy.wrap(token).as('token')
-            cy.visit('/', {
-                onBeforeLoad (win){
-                    win.localStorage.setItem('jwtToken', token)
-                }
-            })
+ })  
 
-        })
-    
-})

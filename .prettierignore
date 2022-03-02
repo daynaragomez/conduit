@@ -1,3 +1,11 @@
+## Prettier specific
+
+/realworld
+
+## Copy of .gitinore
+# Needed until they implement:
+# https://github.com/prettier/prettier/issues/8048
+
 # Logs
 logs
 *.log
@@ -54,6 +62,3 @@ tmp.*
 /out/
 /.now/
 .now
-
-# typescript
-*.tsbuildinfo
