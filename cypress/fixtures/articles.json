@@ -1,0 +1,39 @@
+{
+    "articles": [
+        {
+            "slug": "GitHub-1457",
+            "title": "GitHub ",
+            "description": "code hosting platform",
+            "body": "version control and collaboration, lets you and others work together on projects from anywhere.",
+            "createdAt": "2022-03-11T19:40:32.204Z",
+            "updatedAt": "2022-03-11T19:40:32.204Z",
+            "tagList": [],
+            "author": {
+                "username": "CyTest",
+                "bio": null,
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "following": false
+            },
+            "favoritesCount": 2,
+            "favorited": false
+        },
+        {
+            "slug": "Cloud-Testing4-1457",
+            "title": "Cloud Testing4",
+            "description": "testing environments ",
+            "body": "Is used to assess web applications (or websites) for scalability, performance, security, and reliability. ",
+            "createdAt": "2022-03-10T19:30:04.928Z",
+            "updatedAt": "2022-03-10T19:30:04.928Z",
+            "tagList": [],
+            "author": {
+                "username": "CyTest",
+                "bio": null,
+                "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+                "following": false
+            },
+            "favoritesCount": 5,
+            "favorited": false
+        }
+    ],
+    "articlesCount": 2
+}
