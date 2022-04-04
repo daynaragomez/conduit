@@ -1,0 +1,144 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 1,
+    "failures": -1,
+    "start": "2022-03-31T19:33:26.866Z",
+    "end": "2022-03-31T19:33:32.215Z",
+    "duration": 5349,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 33.33333333333333,
+    "other": 1,
+    "hasOther": true,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "813d714e-be9d-4da9-8d31-29145e39e906",
+      "title": "",
+      "fullFile": "cypress/integration/testingD/firstTestConduit.spec.js",
+      "file": "cypress/integration/testingD/firstTestConduit.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "45fb1e7b-652f-48d4-9766-0a06be99d26a",
+          "title": "Test with backend",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "verify correct request and response",
+              "fullTitle": "Test with backend verify correct request and response",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "931dd896-b1dc-49df-9205-57632881ad87",
+              "parentUUID": "45fb1e7b-652f-48d4-9766-0a06be99d26a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should gave tags with routing object ",
+              "fullTitle": "Test with backend should gave tags with routing object ",
+              "timedOut": null,
+              "duration": 2785,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//looking in json file mocked the co\n//cy.wait(20000)\ncy.get('div .tag-list').should('contain', 'cypress').should('contain', 'automation').should('contain', 'testing');",
+              "err": {},
+              "uuid": "29933fdc-78b7-49f2-b41e-7f7126e3892a",
+              "parentUUID": "45fb1e7b-652f-48d4-9766-0a06be99d26a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify the local feed likes count",
+              "fullTitle": "Test with backend Verify the local feed likes count",
+              "timedOut": null,
+              "duration": 2139,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', '**/articles/feed*', {\n  \"articles\": [],\n  \"articlesCount\": 0\n});\ncy.intercept('GET', '**/articles*', {\n  fixture: 'articles.json'\n});\ncy.contains('Global Feed').click();\ncy.get('app-article-list button').then(listOfButton => {\n  expect(listOfButton).to.contain('2');\n  expect(listOfButton[1]).to.contain('5');\n}); //create the route by call a fixture methode and read the fisture file articles.json\ncy.fixture('articles').then(file => {\n  const articlelink = file.articles[1].slug;\n  cy.intercept('POST', '**/articles/' + articlelink + '/favorite', file); //file is the respond of the link that we created\n}); //assertion \ncy.get('app-article-list button').eq(1).click().should('contain', '6'); //because is mocked test, we do not depend on the backend server",
+              "err": {},
+              "uuid": "a0268642-1541-475c-b84f-94b3be5d6fc1",
+              "parentUUID": "45fb1e7b-652f-48d4-9766-0a06be99d26a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "29933fdc-78b7-49f2-b41e-7f7126e3892a",
+            "a0268642-1541-475c-b84f-94b3be5d6fc1"
+          ],
+          "failures": [],
+          "pending": [
+            "931dd896-b1dc-49df-9205-57632881ad87"
+          ],
+          "skipped": [],
+          "duration": 4924,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "4.1.0"
+    }
+  }
+}

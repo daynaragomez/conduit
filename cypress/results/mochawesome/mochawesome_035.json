@@ -1,0 +1,198 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 1,
+    "pending": 0,
+    "failures": 4,
+    "start": "2022-03-31T19:02:43.772Z",
+    "end": "2022-03-31T19:03:29.371Z",
+    "duration": 45599,
+    "testsRegistered": 5,
+    "passPercent": 20,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d8cc1e8b-8a81-41fa-a815-dfb190bd864a",
+      "title": "",
+      "fullFile": "cypress/integration/firstTest.spec.js",
+      "file": "cypress/integration/firstTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1b0fc3b7-08f2-44b4-8f07-44913fcfe4d6",
+          "title": "Test with backend",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "verify correct request and response",
+              "fullTitle": "Test with backend verify correct request and response",
+              "timedOut": null,
+              "duration": 4794,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('POST', '**/articles').as('postArticles');\ncy.contains('New Article').click();\ncy.get('[formcontrolname=\"title\"]').type('This is a title');\ncy.get('[formcontrolname=\"description\"]').type('This is a descritption');\ncy.get('[formcontrolname=\"body\"]').type('This is a body of the Article');\ncy.contains('Publish Article').click();\ncy.wait('@postArticles');\ncy.get('@postArticles').then(xhr => {\n  console.log(xhr);\n  expect(xhr.response.statusCode).to.equal(200);\n  expect(xhr.request.body.article.body).to.equal('This is a body of the Article');\n  expect(xhr.response.body.article.description).to.equal('This is a descritption');\n});",
+              "err": {
+                "message": "AssertionError: expected 422 to equal 200",
+                "estack": "AssertionError: expected 422 to equal 200\n    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\\integration\\firstTest.spec.js:120:42)",
+                "diff": "- 422\n+ 200\n"
+              },
+              "uuid": "1ff3f95e-b37d-4932-92a9-3ad0d75c86eb",
+              "parentUUID": "1b0fc3b7-08f2-44b4-8f07-44913fcfe4d6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "intercepting and modifying the request and response",
+              "fullTitle": "Test with backend intercepting and modifying the request and response",
+              "timedOut": null,
+              "duration": 5942,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// cy.intercept('POST', '**/articles', (req) => {\n//     req.body.article.description = \"This is a descritption 2\"\n// }).as('postArticles')\ncy.intercept('POST', '**/articles', req => {\n  req.reply(res => {\n    expect(res.body.article.description).to.equal('This is a descritption');\n    res.body.article.description = \"This is a descritption 2\";\n  });\n}).as('postArticles');\ncy.contains('New Article').click();\ncy.get('[formcontrolname=\"title\"]').type('This is a title');\ncy.get('[formcontrolname=\"description\"]').type('This is a descritption');\ncy.get('[formcontrolname=\"body\"]').type('This is a body of the Article');\ncy.contains('Publish Article').click();\ncy.wait('@postArticles');\ncy.get('@postArticles').then(xhr => {\n  console.log(xhr);\n  expect(xhr.response.statusCode).to.equal(200);\n  expect(xhr.request.body.article.body).to.equal('This is a body of the Article');\n  expect(xhr.response.body.article.description).to.equal('This is a descritption 2');\n});",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading 'description')",
+                "estack": "TypeError: Cannot read properties of undefined (reading 'description')\n    at eval (http://localhost:4200/__cypress/tests?p=cypress\\integration\\firstTest.spec.js:131:33)",
+                "diff": null
+              },
+              "uuid": "66491117-250d-4372-87b6-6eb112b1947c",
+              "parentUUID": "1b0fc3b7-08f2-44b4-8f07-44913fcfe4d6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should gave tags with routing object",
+              "fullTitle": "Test with backend should gave tags with routing object",
+              "timedOut": null,
+              "duration": 1623,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.tag-list').should('contain', 'cypress').and('contain', 'automation').and('contain', 'testing');",
+              "err": {},
+              "uuid": "eed47c62-f99d-4ce9-885a-6ef7ca538448",
+              "parentUUID": "1b0fc3b7-08f2-44b4-8f07-44913fcfe4d6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify global feed likes count",
+              "fullTitle": "Test with backend verify global feed likes count",
+              "timedOut": null,
+              "duration": 3042,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept('GET', '**/articles/feed*', {\n  \"articles\": [],\n  \"articlesCount\": 0\n});\ncy.intercept('GET', '**/articles*', {\n  fixture: 'articles.json'\n});\ncy.contains('Global Feed').click();\ncy.get('app-article-list button').then(listOfbuttons => {\n  expect(listOfbuttons[0]).to.contain('1');\n  expect(listOfbuttons[1]).to.contain('5');\n});\ncy.fixture('articles').then(file => {\n  const articleLink = file.articles[1].slug;\n  cy.intercept('POST', '**/articles/' + articleLink + '/favorite', file);\n});\ncy.get('app-article-list button').eq(1).click().should('contain', '6');",
+              "err": {
+                "message": "AssertionError: expected '<button.btn.btn-sm.btn-outline-primary>' to contain '1'",
+                "estack": "AssertionError: expected '<button.btn.btn-sm.btn-outline-primary>' to contain '1'\n    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\\integration\\firstTest.spec.js:161:35)",
+                "diff": null
+              },
+              "uuid": "d8be8cb0-a35b-4494-b14d-d62067be7044",
+              "parentUUID": "1b0fc3b7-08f2-44b4-8f07-44913fcfe4d6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "delete a new article in a global feed",
+              "fullTitle": "Test with backend delete a new article in a global feed",
+              "timedOut": null,
+              "duration": 2575,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const bodyRequest = {\n  \"article\": {\n    \"tagList\": [],\n    \"title\": \"Request from API\",\n    \"description\": \"API testing is easy\",\n    \"body\": \"Angular is cool\"\n  }\n};\ncy.get('@token').then(token => {\n  cy.request({\n    url: Cypress.env('apiUrl') + 'api/articles/',\n    headers: {\n      'Authorization': 'Token ' + token\n    },\n    method: 'POST',\n    body: bodyRequest\n  }).then(response => {\n    expect(response.status).to.equal(200);\n  });\n  cy.contains('Global Feed').click();\n  cy.get('.article-preview').first().click();\n  cy.get('.article-actions').contains('Delete Article').click();\n  cy.request({\n    url: Cypress.env('apiUrl') + 'api/articles?limit=10&offset=0',\n    headers: {\n      'Authorization': 'Token ' + token\n    },\n    method: 'GET'\n  }).its('body').then(body => {\n    expect(body.articles[0].title).not.to.equal('Request from API');\n  });\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://conduit.productionready.io/api/articles/\n\nThe response we received from your web server was:\n\n  > 422: Unprocessable Entity\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://conduit.productionready.io/api/articles/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"Authorization\": \"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN5dGVzdEB0ZXN0LmNvbSIsInVzZXJuYW1lIjoiQ3lUZXN0IiwiaWF0IjoxNjQ4NzUzNDA2LCJleHAiOjE2NTM5Mzc0MDZ9.Bx624PngEisQNhBbrSTi84K7yLtM3sYUsodyuLulMdk\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.5.3 Chrome/94.0.4606.81 Electron/15.3.5 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 114,\n  \"referer\": \"https://conduit.productionready.io/api/articles/\"\n}\nBody: {\"article\":{\"tagList\":[],\"title\":\"Request from API\",\"description\":\"API testing is easy\",\"body\":\"Angular is cool\"}}\nRedirects: [\n  \"307: https://api.realworld.io/api/articles/\"\n]\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 422 - Unprocessable Entity\nHeaders: {\n  \"date\": \"Thu, 31 Mar 2022 19:03:27 GMT\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"content-length\": \"39\",\n  \"connection\": \"keep-alive\",\n  \"x-powered-by\": \"Express\",\n  \"access-control-allow-origin\": \"*\",\n  \"etag\": \"W/\\\"27-BNeuaWQ7DHvW/r+pl+qdJiF06Is\\\"\",\n  \"via\": \"1.1 vegur\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"expect-ct\": \"max-age=604800, report-uri=\\\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\\\"\",\n  \"report-to\": \"{\\\"endpoints\\\":[{\\\"url\\\":\\\"https:\\\\/\\\\/a.nel.cloudflare.com\\\\/report\\\\/v3?s=x3N271iHOCJ0ZLj4W7slHlh7IAolakVf%2Fbn0DWgWuk5JujwymQKH%2Fu2%2BY51RTK45TRMCLlqg9LZ0e5SVQLC4J37EvXCb%2FSBfW9X8oMKiEp9skUk6CT%2FJIZQ45TreIUNw6HE6\\\"}],\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800}\",\n  \"nel\": \"{\\\"success_fraction\\\":0,\\\"report_to\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800}\",\n  \"server\": \"cloudflare\",\n  \"cf-ray\": \"6f4b585d2ea1f03d-EWR\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400, h3-29=\\\":443\\\"; ma=86400\"\n}\nBody: {\n  \"errors\": {\n    \"title\": [\n      \"must be unique\"\n    ]\n  }\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://conduit.productionready.io/api/articles/\n\nThe response we received from your web server was:\n\n  > 422: Unprocessable Entity\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://conduit.productionready.io/api/articles/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"Authorization\": \"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN5dGVzdEB0ZXN0LmNvbSIsInVzZXJuYW1lIjoiQ3lUZXN0IiwiaWF0IjoxNjQ4NzUzNDA2LCJleHAiOjE2NTM5Mzc0MDZ9.Bx624PngEisQNhBbrSTi84K7yLtM3sYUsodyuLulMdk\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.5.3 Chrome/94.0.4606.81 Electron/15.3.5 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 114,\n  \"referer\": \"https://conduit.productionready.io/api/articles/\"\n}\nBody: {\"article\":{\"tagList\":[],\"title\":\"Request from API\",\"description\":\"API testing is easy\",\"body\":\"Angular is cool\"}}\nRedirects: [\n  \"307: https://api.realworld.io/api/articles/\"\n]\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 422 - Unprocessable Entity\nHeaders: {\n  \"date\": \"Thu, 31 Mar 2022 19:03:27 GMT\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"content-length\": \"39\",\n  \"connection\": \"keep-alive\",\n  \"x-powered-by\": \"Express\",\n  \"access-control-allow-origin\": \"*\",\n  \"etag\": \"W/\\\"27-BNeuaWQ7DHvW/r+pl+qdJiF06Is\\\"\",\n  \"via\": \"1.1 vegur\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"expect-ct\": \"max-age=604800, report-uri=\\\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\\\"\",\n  \"report-to\": \"{\\\"endpoints\\\":[{\\\"url\\\":\\\"https:\\\\/\\\\/a.nel.cloudflare.com\\\\/report\\\\/v3?s=x3N271iHOCJ0ZLj4W7slHlh7IAolakVf%2Fbn0DWgWuk5JujwymQKH%2Fu2%2BY51RTK45TRMCLlqg9LZ0e5SVQLC4J37EvXCb%2FSBfW9X8oMKiEp9skUk6CT%2FJIZQ45TreIUNw6HE6\\\"}],\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800}\",\n  \"nel\": \"{\\\"success_fraction\\\":0,\\\"report_to\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800}\",\n  \"server\": \"cloudflare\",\n  \"cf-ray\": \"6f4b585d2ea1f03d-EWR\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400, h3-29=\\\":443\\\"; ma=86400\"\n}\nBody: {\n  \"errors\": {\n    \"title\": [\n      \"must be unique\"\n    ]\n  }\n}\n\n\nhttps://on.cypress.io/request\n    at http://localhost:4200/__cypress/runner/cypress_runner.js:160659:80\n    at tryCatcher (http://localhost:4200/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (http://localhost:4200/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (http://localhost:4200/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (http://localhost:4200/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (http://localhost:4200/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (http://localhost:4200/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (http://localhost:4200/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:4200/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (http://localhost:4200/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\\integration\\firstTest.spec.js:180:10)",
+                "diff": null
+              },
+              "uuid": "b2ab71df-2825-4095-a66f-694c86c56f43",
+              "parentUUID": "1b0fc3b7-08f2-44b4-8f07-44913fcfe4d6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "eed47c62-f99d-4ce9-885a-6ef7ca538448"
+          ],
+          "failures": [
+            "1ff3f95e-b37d-4932-92a9-3ad0d75c86eb",
+            "66491117-250d-4372-87b6-6eb112b1947c",
+            "d8be8cb0-a35b-4494-b14d-d62067be7044",
+            "b2ab71df-2825-4095-a66f-694c86c56f43"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 17976,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "4.1.0"
+    }
+  }
+}

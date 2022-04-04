@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="11.9400" tests="5" failures="1" skipped="1">
+  <testsuite name="Root Suite" timestamp="2022-03-31T19:17:30" tests="0" file="cypress/integration/testingD/refactorServerRoute.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Test with backend / refactoring use intercept" timestamp="2022-03-31T19:17:30" tests="5" time="11.9400" failures="1">
+    <testcase name="Test with backend / refactoring use intercept verify correct request and response" time="5.7580" classname="verify correct request and response">
+      <failure message="expected 422 to equal 200" type="AssertionError"><![CDATA[AssertionError: expected 422 to equal 200
+    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\integration\testingD\refactorServerRoute.spec.js:124:42)]]></failure>
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept should gave tags with routing object " time="1.2020" classname="should gave tags with routing object ">
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept Verify the local feed likes count" time="1.9820" classname="Verify the local feed likes count">
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept Delete new article  in global feed" time="2.9980" classname="Delete new article  in global feed">
+    </testcase>
+  </testsuite>
+</testsuites>

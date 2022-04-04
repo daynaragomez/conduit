@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="12.2490" tests="5" failures="1" skipped="1">
+  <testsuite name="Root Suite" timestamp="2022-03-31T19:03:55" tests="0" file="cypress/integration/testingD/refactorServerRoute.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Test with backend / refactoring use intercept" timestamp="2022-03-31T19:03:55" tests="5" time="12.2490" failures="1">
+    <testcase name="Test with backend / refactoring use intercept verify correct request and response" time="5.5440" classname="verify correct request and response">
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept should gave tags with routing object " time="1.6710" classname="should gave tags with routing object ">
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept Verify the local feed likes count" time="1.5920" classname="Verify the local feed likes count">
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept Delete new article  in global feed" time="3.4420" classname="Delete new article  in global feed">
+      <failure message="expected &apos;Request from API (Postman)&apos; to not equal &apos;Request from API (Postman)&apos;" type="AssertionError"><![CDATA[AssertionError: expected 'Request from API (Postman)' to not equal 'Request from API (Postman)'
+    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\integration\testingD\refactorServerRoute.spec.js:227:44)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

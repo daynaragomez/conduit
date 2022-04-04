@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="1.7770" tests="5" failures="4">
+  <testsuite name="Root Suite" timestamp="2022-03-31T19:29:41" tests="0" file="cypress/integration/firstTest.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Test with backend" timestamp="2022-03-31T19:29:41" tests="5" time="1.7770" failures="4">
+    <testcase name="Test with backend verify correct request and response" time="0.0000" classname="verify correct request and response">
+      <failure message="expected 307 to equal 200" type="AssertionError"><![CDATA[AssertionError: expected 307 to equal 200
+    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\integration\firstTest.spec.js:120:42)]]></failure>
+    </testcase>
+    <testcase name="Test with backend intercepting and modifying the request and response" time="0.0000" classname="intercepting and modifying the request and response">
+      <failure message="Cannot read properties of undefined (reading &apos;description&apos;)" type="TypeError"><![CDATA[TypeError: Cannot read properties of undefined (reading 'description')
+    at eval (http://localhost:4200/__cypress/tests?p=cypress\integration\firstTest.spec.js:131:33)]]></failure>
+    </testcase>
+    <testcase name="Test with backend should gave tags with routing object" time="1.7770" classname="should gave tags with routing object">
+    </testcase>
+    <testcase name="Test with backend verify global feed likes count" time="0.0000" classname="verify global feed likes count">
+      <failure message="expected &apos;&lt;button.btn.btn-sm.btn-outline-primary&gt;&apos; to contain &apos;1&apos;" type="AssertionError"><![CDATA[AssertionError: expected '<button.btn.btn-sm.btn-outline-primary>' to contain '1'
+    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\integration\firstTest.spec.js:161:35)]]></failure>
+    </testcase>
+    <testcase name="Test with backend delete a new article in a global feed" time="0.0000" classname="delete a new article in a global feed">
+      <failure message="`cy.request()` failed on:
+
+http://localhost:4200/undefinedapi/articles/
+
+The response we received from your web server was:
+
+  &gt; 404: Not Found
+
+This was considered a failure because the status code was not `2xx` or `3xx`.
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+
+-----------------------------------------------------------
+
+The request we sent was:
+
+Method: POST
+URL: http://localhost:4200/undefinedapi/articles/
+Headers: {
+  &quot;Connection&quot;: &quot;keep-alive&quot;,
+  &quot;Authorization&quot;: &quot;Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN5dGVzdEB0ZXN0LmNvbSIsInVzZXJuYW1lIjoiQ3lUZXN0IiwiaWF0IjoxNjQ4NzU0OTkzLCJleHAiOjE2NTM5Mzg5OTN9.WT3yudiqm7K6X31lBXLlT7ZOIHs69zLtvM8SFrdYmLg&quot;,
+  &quot;user-agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.5.3 Chrome/94.0.4606.81 Electron/15.3.5 Safari/537.36&quot;,
+  &quot;accept&quot;: &quot;*/*&quot;,
+  &quot;accept-encoding&quot;: &quot;gzip, deflate&quot;,
+  &quot;content-type&quot;: &quot;application/json&quot;,
+  &quot;content-length&quot;: 114
+}
+Body: {&quot;article&quot;:{&quot;tagList&quot;:[],&quot;title&quot;:&quot;Request from API&quot;,&quot;description&quot;:&quot;API testing is easy&quot;,&quot;body&quot;:&quot;Angular is cool&quot;}}
+
+-----------------------------------------------------------
+
+The response we got was:
+
+Status: 404 - Not Found
+Headers: {
+  &quot;x-powered-by&quot;: &quot;Express&quot;,
+  &quot;access-control-allow-origin&quot;: &quot;*&quot;,
+  &quot;content-security-policy&quot;: &quot;default-src &apos;none&apos;&quot;,
+  &quot;x-content-type-options&quot;: &quot;nosniff&quot;,
+  &quot;content-type&quot;: &quot;text/html; charset=utf-8&quot;,
+  &quot;content-length&quot;: &quot;162&quot;,
+  &quot;date&quot;: &quot;Thu, 31 Mar 2022 19:29:54 GMT&quot;,
+  &quot;connection&quot;: &quot;keep-alive&quot;,
+  &quot;keep-alive&quot;: &quot;timeout=5&quot;
+}
+Body: &lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;pre&gt;Cannot POST /undefinedapi/articles/&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+https://on.cypress.io/request" type="CypressError"><![CDATA[CypressError: `cy.request()` failed on:
+
+http://localhost:4200/undefinedapi/articles/
+
+The response we received from your web server was:
+
+  > 404: Not Found
+
+This was considered a failure because the status code was not `2xx` or `3xx`.
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+
+-----------------------------------------------------------
+
+The request we sent was:
+
+Method: POST
+URL: http://localhost:4200/undefinedapi/articles/
+Headers: {
+  "Connection": "keep-alive",
+  "Authorization": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN5dGVzdEB0ZXN0LmNvbSIsInVzZXJuYW1lIjoiQ3lUZXN0IiwiaWF0IjoxNjQ4NzU0OTkzLCJleHAiOjE2NTM5Mzg5OTN9.WT3yudiqm7K6X31lBXLlT7ZOIHs69zLtvM8SFrdYmLg",
+  "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.5.3 Chrome/94.0.4606.81 Electron/15.3.5 Safari/537.36",
+  "accept": "*/*",
+  "accept-encoding": "gzip, deflate",
+  "content-type": "application/json",
+  "content-length": 114
+}
+Body: {"article":{"tagList":[],"title":"Request from API","description":"API testing is easy","body":"Angular is cool"}}
+
+-----------------------------------------------------------
+
+The response we got was:
+
+Status: 404 - Not Found
+Headers: {
+  "x-powered-by": "Express",
+  "access-control-allow-origin": "*",
+  "content-security-policy": "default-src 'none'",
+  "x-content-type-options": "nosniff",
+  "content-type": "text/html; charset=utf-8",
+  "content-length": "162",
+  "date": "Thu, 31 Mar 2022 19:29:54 GMT",
+  "connection": "keep-alive",
+  "keep-alive": "timeout=5"
+}
+Body: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /undefinedapi/articles/</pre>
+</body>
+</html>
+
+https://on.cypress.io/request
+    at http://localhost:4200/__cypress/runner/cypress_runner.js:160659:80
+    at tryCatcher (http://localhost:4200/__cypress/runner/cypress_runner.js:13022:23)
+    at Promise._settlePromiseFromHandler (http://localhost:4200/__cypress/runner/cypress_runner.js:10957:31)
+    at Promise._settlePromise (http://localhost:4200/__cypress/runner/cypress_runner.js:11014:18)
+    at Promise._settlePromise0 (http://localhost:4200/__cypress/runner/cypress_runner.js:11059:10)
+    at Promise._settlePromises (http://localhost:4200/__cypress/runner/cypress_runner.js:11139:18)
+    at _drainQueueStep (http://localhost:4200/__cypress/runner/cypress_runner.js:7729:12)
+    at _drainQueue (http://localhost:4200/__cypress/runner/cypress_runner.js:7722:9)
+    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:4200/__cypress/runner/cypress_runner.js:7738:5)
+    at Async.drainQueues (http://localhost:4200/__cypress/runner/cypress_runner.js:7608:14)
+From Your Spec Code:
+    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress\integration\firstTest.spec.js:180:10)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

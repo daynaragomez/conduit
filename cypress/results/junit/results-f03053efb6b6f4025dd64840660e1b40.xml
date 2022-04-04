@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="3.9750" tests="3" failures="0" skipped="1">
+  <testsuite name="Root Suite" timestamp="2022-03-31T17:58:33" tests="0" file="cypress/integration/testingD/firstTestConduit.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Test with backend" timestamp="2022-03-31T17:58:33" tests="3" time="3.9750" failures="0">
+    <testcase name="Test with backend should gave tags with routing object " time="2.3630" classname="should gave tags with routing object ">
+    </testcase>
+    <testcase name="Test with backend Verify the local feed likes count" time="1.6120" classname="Verify the local feed likes count">
+    </testcase>
+  </testsuite>
+</testsuites>

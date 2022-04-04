@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="11.5100" tests="5" failures="0" skipped="1">
+  <testsuite name="Root Suite" timestamp="2022-03-31T19:33:35" tests="0" file="cypress/integration/testingD/refactorServerRoute.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Test with backend / refactoring use intercept" timestamp="2022-03-31T19:33:35" tests="5" time="11.5100" failures="0">
+    <testcase name="Test with backend / refactoring use intercept verify correct request and response" time="5.5410" classname="verify correct request and response">
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept should gave tags with routing object " time="1.1800" classname="should gave tags with routing object ">
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept Verify the local feed likes count" time="1.4770" classname="Verify the local feed likes count">
+    </testcase>
+    <testcase name="Test with backend / refactoring use intercept Delete new article  in global feed" time="3.3120" classname="Delete new article  in global feed">
+    </testcase>
+  </testsuite>
+</testsuites>
