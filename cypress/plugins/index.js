@@ -15,17 +15,20 @@ const fs = require('fs-extra')
 const path = require('path')
 
 function getConfigurationByFile (file) {
-  const pathToConfigFile = path.resolve('cypress', 'config', `${file}.json`)
+   //file variable call the qa.json generic name
+  const pathToConfigFile = path.resolve('cypress', 'config', `${file}.json`) 
+  //directorio en la carpeta cypress, config y el archivo
   if(!fs.existsSync(pathToConfigFile)){
-    return {};
+    return {}; //returning empty object if we do not have a file
   }
 
   return fs.readJson(pathToConfigFile)
 }
 
 module.exports = (on, config) => {
+ // require('cypress-plugin-retries/lib/plugin')(on)
+  const file = config.env.configFile // || 'development' quitamos ya que no tenemos ambiente llamado development dearrollo y solo queremos usar nuestro archivo qa.json
 
-  const file = config.env.configFile
 
   return getConfigurationByFile(file)
 }
